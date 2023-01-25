@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="kr.board.mapper.BoardMapper"> <!--넹임스페이스는 이쿼리랑연결되어있는 인터페이스의 위치경로를 적어준다.  -->
+
+	<select id="getList" resultType="kr.board.entity.Board" parameterType="kr.board.entity.Criteria">
+		select * from myboard order by idx desc
+	</select>
+	
+	<insert id="insertBoard" parameterType="kr.board.entity.Board">
+		insert into myBoard(memId,title,content,writer)
+	    values(#{memId},#{title},#{content},#{writer});
+	</insert>
+	
+	<select id="getDetailBoard" resultType="kr.board.entity.Board" parameterType="int">
+		select * from myBoard 
+		where idx = #{idx};
+	</select>
+	
+	<update id="BoardModify" parameterType="kr.board.entity.Board">
+		update  myBoard 
+		set title = #{title},
+			content=#{content}		
+		where idx = #{idx};
+	</update>
+	
+	<delete id="BoardDelete" parameterType="kr.board.entity.Board">
+		delete from myBoard
+		where idx = #{idx};
+	</delete>
+	
+	<update id="addCount" parameterType="kr.board.entity.Board">
+		update myBoard
+		set count = #{count} + 1
+		where idx = #{idx};
+	</update>
+	
+	<select id="totalCount" resultType="int">
+		select count(*) from myBoard;
+	
+	</select>
+</mapper>
