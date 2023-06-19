@@ -236,7 +236,7 @@
 	    	</table>
     	</form>
     </div>
-    <div class="panel-footer">인프런_스프1탄_정재원</div>
+    <div class="panel-footer">정재원풋터</div>
   </div>
 </div>
 
